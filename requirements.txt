@@ -1,0 +1,14 @@
+requests
+django
+openai
+django-quill-editor
+django-tiny-mce
+channels
+djangorestframework
+django-cors-headers
+django-forms-bootstrap
+django-froala-editor
+django-ckeditor
+captcha
+crispy-bootstrap5
+sqlparse

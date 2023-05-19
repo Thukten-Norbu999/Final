@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <title>Projectile</title>
+    <style>
+        html,body{
+            height: 80%;
+        }
+    
+        canvas{
+            display: block;
+        }
+        .canvas-container{
+            width: 100%;
+            height: 80%;
+        }
+    </style>
+</head>
+<body>
+    
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+    <script src="{% static 'func_js/air_resistance.js' %}"></script>
+</body>
+
+
+</html>

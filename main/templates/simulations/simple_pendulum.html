@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<body>
+    <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
+    <script src="{% static 'func_js/pendulum.js' %}"></script>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    .canvas-container {
+        height: 100%;
+        width: 100%;
+    }
+
+    #canvas {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+
+
+
+</html>

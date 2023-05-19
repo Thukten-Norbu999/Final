@@ -1,0 +1,63 @@
+{% extends 'main/index.html' %}
+{% block title %} Courses {% endblock %}
+{% load static %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 text-center slider-text">
+			<div class="slider-text-inner">
+				<h1>BEST COURSES</h1>
+				<h2>WE PROVIDE YOU COURSES</h2>
+				<img>
+			</div>
+			<li class="nav-item collapse navbar-collapse" id="navbarSearchForm">
+				<form class="d-flex ms-auto my-2 my-lg-0">
+				  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+				  <button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</li>
+		</div>
+	</div>
+</div>
+</div>
+
+<div id="fh5co-course">
+	<div class="container">
+		<div class="row animate-box">
+			<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+				<h2>Categories</h2>
+			</div>
+		</div>
+		
+		
+		<div class="row">
+			{% if courses %}
+				{% for course in courses %}
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<a href="#" class="course-img">
+						</a>
+						<div class="desc" >
+							<h3><a href="#">{{course.title}}</a></h3>
+							<p>{{course.description|truncatewords_html:30|safe}}</p>
+							<span><a href="{% url 'course_modules' course.title %}"
+									class="btn btn-primary btn-sm btn-course">Take A Course</a></span>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			{% else %}
+				<div class="course">
+
+					<div class="desc" style="word-wrap: break-word;">
+						<h1>No Courses :(</h1>
+					</div>
+				</div>
+			{% endif %}
+			
+			</div>
+		</div>
+		
+	</div>
+</div>
+{% endblock %}

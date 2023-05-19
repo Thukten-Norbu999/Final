@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% block title %} Learner Signup {% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="form">
+    <center>Learner</center>
+    <form class="register-form" method="post">
+        {% csrf_token %}
+        {{ learner_profile_form.non_field_errors }}
+
+        <p> <label>{{ learner_profile_form.name.label_tag }}</label>{{ learner_profile_form.name }}</p>
+        <label for="">{{ learner_profile_form.email.label_tag }}</label>
+        {{ learner_profile_form.email }}
+        
+        {{ user_form.non_field_errors }}
+
+        <p> <label for="">{{ user_form.username.label_tag }}</label>{{ user_form.username }}</p>
+        <p> {{ user_form.username.help_text }}</p>
+        <p> <label for="">{{ user_form.password1.label_tag }}</label>{{ user_form.password1 }}</p>
+        <p>Password can't be similar to your other fields and must contain atleast 8 characters.</p>
+        <p> <label for="">{{ user_form.password2.label_tag }}</label>{{ user_form.password2 }}</p>
+        <p> {{ user_form.password2.help_text }} </p>
+        
+        <button class="btn btn-success" type="submit">create</button>
+        <p class="message">Already registered? <a href="/app/login">Log In</a></p>
+    </form>
+</div>
+{% endblock %}
+

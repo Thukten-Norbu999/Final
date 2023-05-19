@@ -1,0 +1,68 @@
+{% extends 'main/index.html' %}
+
+{% block title %} Simulation {% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div id="fh5co-blog">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>Simulations</h2>
+                <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+            </div>
+        </div>
+        <div class="row row-padded-mb">
+            <div class="col-md-4 animate-box">
+                <div class="fh5co-event">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{% static '' %}" class="card-img-top" alt="Picture of simulation">
+                        <div class="card-body">
+                          <h5 class="card-title">Projectile</h5>
+                          <p class="card-text">Velocity, acceleration and Vectors</p>
+                          <a href="/simulations/projectile" class="btn btn-primary">Go</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="col-md-4 animate-box">
+                <div class="fh5co-event">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{% static '' %}" class="card-img-top" alt="Picture of simulation">
+                        <div class="card-body">
+                          <h5 class="card-title">Simple Pendulum</h5>
+                          <p class="card-text">Velocity, acceleration and Vectors</p>
+                          <a href="/simulations/simple-pendulum" class="btn btn-primary">Go</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="col-md-4 animate-box">
+                <div class="fh5co-event">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{% static '' %}" class="card-img-top" alt="Picture of simulation">
+                        <div class="card-body">
+                          <h5 class="card-title">Cradle</h5>
+                          <p class="card-text">Velocity, acceleration and Vectors</p>
+                          <a href="/simulations/cradle" class="btn btn-primary">Go</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="col-md-4 animate-box">
+                <div class="fh5co-event">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{% static '' %}" class="card-img-top" alt="Picture of simulation">
+                        <div class="card-body">
+                          <h5 class="card-title">Gravity</h5>
+                          <p class="card-text">Velocity, acceleration and Vectors</p>
+                          <a href="/simulations/gravity" class="btn btn-primary">Go</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

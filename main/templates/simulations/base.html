@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Simulation {% endblock %}</title>
+    <style>
+      canvas {
+        max-width: 100%;
+        display: block;
+        margin: auto;
+      }
+      #oscillations {
+        margin-top: 20px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  
+<body>
+    {% block content %}
+    <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
+    {% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
+</body>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    .canvas-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #canvas {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+
+</html>
