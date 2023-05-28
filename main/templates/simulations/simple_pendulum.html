@@ -1,12 +1,87 @@
-<!DOCTYPE html>
-<html>
+{% extends 'simulations/base.html' %}
 {% load static %}
-<body>
-    <div class="canvas-container">
-        <canvas id="canvas"></canvas>
+{% block title %} Simple Pendulum {% endblock %}
+{% block content %}
+<div class="container">
+
+    <div class="row g-5">
+        <div class="col-md-8">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <div class="col-md-4">
+            <canvas id="graphCanvas"></canvas>
+            <div class="position-sticky" style="top: 2rem;">
+                <div class="p-4 mb-3 bg-body-tertiary rounded">
+                    <h4 class="fst-italic">About</h4>
+                    <p class="mb-0">Customize this section to tell your visitors a little bit about your
+                        publication,
+                        writers, content, or something else entirely. Totally up to you.</p>
+                </div>
+
+                <button class="btn btn-success" id="button" type="button">Start</button>
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                aria-controls="panelsStayOpen-collapseOne">
+                                Simulation
+                            </button>
+                        </h2>
+
+                       
+                       
+
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <label>Length</label>
+                                <input type="range" id="length" min="100" max="200" step=".5" value=""><br>
+                                <p id="lengthValue"></p>
+                            </div>
+                        </div>
+                   
+                       
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <label>Gravity</label>
+                                <input type="range" id="gravity" min="1" max="10" step=".1" value=""><br>
+                                <p id="gravityValue"></p>
+                            </div>
+                        </div>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <input type="range" id="optimumAngle" min="100" max="200" step=".5" value=""><br>
+                                <p id="optimumValue"></p>
+                            </div>
+                        </div>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <label>Air Friction</label>
+                                <input type="range" id="airFriction" min="0" max="5" step=".1" value="0"><br>
+                                <p id="airFrictionVal"></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
-    <script src="{% static 'func_js/pendulum.js' %}"></script>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"
+    integrity="sha512-5T245ZTH0m0RfONiFm2NF0zcYcmAuNzcGyPSQ18j8Bs5Pbfhp5HP1hosrR8XRt5M3kSRqzjNMYpm2+it/AUX/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.js"
+    integrity="sha512-rsntMCBgWYEWKl4HtqWmQ3vdHgvSq8CTtJd19YL7lCtKokLPWt7UEoHVabK1uiNfUdaLit8O090no5BZjcz+bw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.js"
+    integrity="sha512-kTA5As3DFbe7Gz6vIpsyaWjX9WSEKeyGigJkmzlQDIUVlPV5ceFxKHG+CAXvbxQvd8iVWJ6nS5egDw1WCss4Sw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'func_js/pendulum.js' %}"></script>
 <style>
     * {
         box-sizing: border-box;
@@ -30,6 +105,4 @@
     }
 </style>
 
-
-
-</html>
+{% endblock %}

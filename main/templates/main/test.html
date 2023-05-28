@@ -1,614 +1,98 @@
-{% extends 'main/index.html' %}
-{% load static %}
-{% block content %}
+<!DOCTYPE HTML>
+<html>
 
-<body data-new-gr-c-s-check-loaded="14.1110.0" data-gr-ext-installed="" class="">
-  <div class="ins-container">
-    <div class="ins-top-panel"></div><input class="ins-search-box" type="search" placeholder="search"><button
-      aria-label="Add composite body" title="Add composite body" class="ins-add-button ins-button">+</button>
-    <div class="ins-world-tree jstree jstree-13 jstree-default" role="tree" aria-multiselectable="true" tabindex="0"
-      aria-activedescendant="composite_0" aria-busy="false">
-      <ul class="jstree-container-ul jstree-children" role="group">
-        <li role="none" id="composite_0" class="jstree-node jstree-node-type-composite jstree-open jstree-last"><i
-            class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1"
-            role="treeitem" aria-selected="false" aria-level="1" aria-expanded="true" id="composite_0_anchor"><i
-              class="jstree-icon jstree-themeicon" role="presentation"></i>World 0</a>
-          <ul role="group" class="jstree-children">
-            <li role="none" id="composites_0" class="jstree-node jstree-node-type-composites jstree-leaf"><i
-                class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1"
-                role="treeitem" aria-selected="false" aria-level="2" id="composites_0_anchor"><i
-                  class="jstree-icon jstree-themeicon" role="presentation"></i>Composites</a></li>
-            <li role="none" id="bodies_0" class="jstree-node jstree-node-type-bodies jstree-open"><i
-                class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1"
-                role="treeitem" aria-selected="false" aria-level="2" aria-expanded="true" id="bodies_0_anchor"><i
-                  class="jstree-icon jstree-themeicon" role="presentation"></i>Bodies</a>
-              <ul role="group" class="jstree-children">
-                <li role="none" id="body_1" class="jstree-node jstree-node-type-body jstree-leaf"><i
-                    class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#"
-                    tabindex="-1" role="treeitem" aria-selected="false" aria-level="3" id="body_1_anchor"><i
-                      class="jstree-icon jstree-themeicon" role="presentation"></i>Rectangle Body 1</a></li>
-                <li role="none" id="body_2" class="jstree-node jstree-node-type-body jstree-leaf"><i
-                    class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#"
-                    tabindex="-1" role="treeitem" aria-selected="false" aria-level="3" id="body_2_anchor"><i
-                      class="jstree-icon jstree-themeicon" role="presentation"></i>Rectangle Body 2</a></li>
-                <li role="none" id="body_3" class="jstree-node jstree-node-type-body jstree-leaf"><i
-                    class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#"
-                    tabindex="-1" role="treeitem" aria-selected="false" aria-level="3" id="body_3_anchor"><i
-                      class="jstree-icon jstree-themeicon" role="presentation"></i>Rectangle Body 3</a></li>
-                <li role="none" id="body_4" class="jstree-node jstree-node-type-body jstree-leaf"><i
-                    class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#"
-                    tabindex="-1" role="treeitem" aria-selected="false" aria-level="3" id="body_4_anchor"><i
-                      class="jstree-icon jstree-themeicon" role="presentation"></i>Rectangle Body 4</a></li>
-                <li role="none" id="body_5" class="jstree-node jstree-node-type-body jstree-leaf"><i
-                    class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#"
-                    tabindex="-1" role="treeitem" aria-selected="false" aria-level="3" id="body_5_anchor"><i
-                      class="jstree-icon jstree-themeicon" role="presentation"></i>Rectangle Body 5</a></li>
-                <li role="none" id="body_6" class="jstree-node jstree-node-type-body jstree-leaf"><i
-                    class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#"
-                    tabindex="-1" role="treeitem" aria-selected="false" aria-level="3" id="body_6_anchor"><i
-                      class="jstree-icon jstree-themeicon" role="presentation"></i>Rectangle Body 6</a></li>
-                <li role="none" id="body_7" class="jstree-node jstree-node-type-body jstree-leaf jstree-last"><i
-                    class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#"
-                    tabindex="-1" role="treeitem" aria-selected="false" aria-level="3" id="body_7_anchor"><i
-                      class="jstree-icon jstree-themeicon" role="presentation"></i>Rectangle Body 7</a></li>
-              </ul>
-            </li>
-            <li role="none" id="constraints_0" class="jstree-node jstree-node-type-constraints jstree-open jstree-last">
-              <i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1"
-                role="treeitem" aria-selected="false" aria-level="2" aria-expanded="true" id="constraints_0_anchor"><i
-                  class="jstree-icon jstree-themeicon" role="presentation"></i>Constraints</a>
-              <ul role="group" class="jstree-children">
-                <li role="none" id="constraint_8"
-                  class="jstree-node jstree-node-type-constraint jstree-leaf jstree-last"><i
-                    class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#"
-                    tabindex="-1" role="treeitem" aria-selected="false" aria-level="3" id="constraint_8_anchor"><i
-                      class="jstree-icon jstree-themeicon" role="presentation"></i>Mouse Constraint 8</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <script src="./js/matter-demo.main.5754e1.min.js"></script>
-  <script src="./js/matter-demo.matter-tools.97f38a.min.js"></script>
-  <script src="./js/matter-demo.matter-wrap.dbda1f.min.js"></script>
-  <script src="./js/matter-demo.pathseg.cf21c2.min.js"></script>
-  <script src="./js/matter-demo.poly-decomp.c3d015.min.js"></script>
-  <script src="./js/matter-demo.6283b1.min.js"></script>
-  <div class="matter-demo matter-js matter-inspect-active matter-gui-active">
-    <div class="matter-header-outer">
-      <header class="matter-header">
-        <div class="matter-header-inner">
-          <h1 class="matter-demo-title">
-            <a href="https://github.com/liabru/matter-js" target="_blank">
-              matter-js
-              <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5z"></path>
-              </svg>
-            </a>
-          </h1>
-          <div class="matter-toolbar">
-            <div class="matter-select-wrapper">
-              <select aria-label="Select example" title="Select example" class="matter-example-select matter-select">
-                <option value="airFriction">Air Friction</option>
-                <option value="avalanche">Avalanche</option>
-                <option value="ballPool">Ball Pool</option>
-                <option value="bridge">Bridge</option>
-                <option value="car">Car</option>
-                <option value="catapult">Catapult</option>
-                <option value="chains">Chains</option>
-                <option value="circleStack">Circle Stack</option>
-                <option value="cloth">Cloth</option>
-                <option value="collisionFiltering">Collision Filtering</option>
-                <option value="compositeManipulation">Composite Manipulation</option>
-                <option value="compound">Compound Bodies</option>
-                <option value="compoundStack">Compound Stack</option>
-                <option value="concave">Concave</option>
-                <option value="constraints">Constraints</option>
-                <option value="doublePendulum">Double Pendulum</option>
-                <option value="events">Events</option>
-                <option value="friction">Friction</option>
-                <option value="gravity">Reverse Gravity</option>
-                <option value="gyro">Gyroscope</option>
-                <option value="manipulation">Manipulation</option>
-                <option value="mixed">Mixed Shapes</option>
-                <option value="newtonsCradle">Newton's Cradle</option>
-                <option value="ragdoll">Ragdoll</option>
-                <option value="pyramid">Pyramid</option>
-                <option value="raycasting">Raycasting</option>
-                <option value="restitution">Restitution</option>
-                <option value="rounded">Rounded Corners (Chamfering)</option>
-                <option value="remove">Composite Remove</option>
-                <option value="sensors">Sensors</option>
-                <option value="sleeping">Sleeping</option>
-                <option value="slingshot">Slingshot</option>
-                <option value="softBody">Soft Body</option>
-                <option value="sprites">Sprites</option>
-                <option value="stack">Stack</option>
-                <option value="staticFriction">Static Friction</option>
-                <option value="stats">Stats &amp; Performance</option>
-                <option value="stress">Stress</option>
-                <option value="stress2">Stress 2</option>
-                <option value="stress3">Stress 3</option>
-                <option value="svg">Concave SVG Paths</option>
-                <option value="terrain">Terrain</option>
-                <option value="timescale">Time Scaling</option>
-                <option value="views">Views</option>
-                <option value="wreckingBall">Wrecking Ball</option>
-              </select>
-              <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 10l5 5 5-5z"></path>
-                <path d="M0 0h24v24H0z" fill="none"></path>
-              </svg>
-            </div>
-            <button class="matter-btn matter-btn-reset" title="Reset">
-              <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z">
-                </path>
-                <path d="M0 0h24v24H0z" fill="none"></path>
-              </svg>
-            </button>
-            <a href="https://github.com/liabru/matter-js/blob/master/examples/airFriction.js"
-              class="matter-btn matter-btn-source" title="Source" target="_blank">{ }</a>
-            <button class="matter-btn matter-btn-tools" title="Tools">
-              <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z">
-                </path>
-                <path d="M0 0h24v24H0z" fill="none"></path>
-              </svg>
-            </button>
-            <button class="matter-btn matter-btn-inspect" title="Inspect">
-              <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0h24v24H0z" fill="none"></path>
-                <path
-                  d="M11 4.07V2.05c-2.01.2-3.84 1-5.32 2.21L7.1 5.69c1.11-.86 2.44-1.44 3.9-1.62zm7.32.19C16.84 3.05 15.01 2.25 13 2.05v2.02c1.46.18 2.79.76 3.9 1.62l1.42-1.43zM19.93 11h2.02c-.2-2.01-1-3.84-2.21-5.32L18.31 7.1c.86 1.11 1.44 2.44 1.62 3.9zM5.69 7.1L4.26 5.68C3.05 7.16 2.25 8.99 2.05 11h2.02c.18-1.46.76-2.79 1.62-3.9zM4.07 13H2.05c.2 2.01 1 3.84 2.21 5.32l1.43-1.43c-.86-1.1-1.44-2.43-1.62-3.89zM15 12c0-1.66-1.34-3-3-3s-3 1.34-3 3 1.34 3 3 3 3-1.34 3-3zm3.31 4.9l1.43 1.43c1.21-1.48 2.01-3.32 2.21-5.32h-2.02c-.18 1.45-.76 2.78-1.62 3.89zM13 19.93v2.02c2.01-.2 3.84-1 5.32-2.21l-1.43-1.43c-1.1.86-2.43 1.44-3.89 1.62zm-7.32-.19C7.16 20.95 9 21.75 11 21.95v-2.02c-1.46-.18-2.79-.76-3.9-1.62l-1.42 1.43z">
-                </path>
-              </svg>
-            </button>
-            <button class="matter-btn matter-btn-fullscreen" title="Fullscreen">
-              <svg fill="#000000" height="22" viewBox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path>
-              </svg>
-            </button>
-          </div>
-          <a class="matter-link" href="https://brm.io/matter-js/" title="matter.js" target="_blank">
-            <svg class="matter-logo" height="100" viewBox="0 952.04859 330 100" width="268"
-              xmlns="http://www.w3.org/2000/svg">
-              <path id="m-triangle" style="fill:#76f09b;"
-                d="m 115.83215,1052.3622 -57.916072,0 -57.916078053812107,0 L 28.958038,1002.2054 57.916077,952.04859 86.874114,1002.2054 Z">
-              </path>
-              <path id="m-square" style="fill:#f55f5f"
-                d="m 168.03172,952.36218 0,100.00002 100,0 0,-100.00002 -100,0 z"></path>
-              <circle id="m-circle" style="fill:#f5b862" r="12.947398" cy="1039.4148" cx="140.28374"></circle>
-            </svg>
-          </a>
-        </div>
-      </header>
-    </div>
-    <canvas width="800" height="600" style="background:  0% 0% / contain rgb(20, 21, 31);"></canvas>
-  </div>
-  <script type="text/javascript" src="/js/scripts.js?v=4"></script>
+<head>
+    <meta charset="utf-8">
+    <title>
+        Pendulum
+    </title>
+</head>
 
-  <div class="dg main" style="width: 245px;">
-    <ul>
-      <li class="folder">
-        <div class="dg">
-          <ul class="closed">
-            <li class="title">Metrics</li>
-            <li class="cr number">
-              <div><span class="property-name">fps</span>
-                <div class="c"><input type="text"></div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="folder">
-        <div class="dg">
-          <ul>
-            <li class="title">Add Body</li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">amount</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 0%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">size</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 24.1379%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">sides</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 42.8571%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">density</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 9.09091%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">friction</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 10%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">frictionStatic</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 5%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">frictionAir</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 10%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">restitution</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 0%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">chamfer</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 0%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr function">
-              <div><span class="property-name">addBody</span>
-                <div class="c">
-                  <div class="button"></div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="folder">
-        <div class="dg">
-          <ul class="closed">
-            <li class="title">World</li>
-            <li class="cr function">
-              <div><span class="property-name">load</span>
-                <div class="c">
-                  <div class="button"></div>
-                </div>
-              </div>
-            </li>
-            <li class="cr function">
-              <div><span class="property-name">save</span>
-                <div class="c">
-                  <div class="button"></div>
-                </div>
-              </div>
-            </li>
-            <li class="cr function">
-              <div><span class="property-name">clear</span>
-                <div class="c">
-                  <div class="button"></div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="folder">
-        <div class="dg">
-          <ul class="closed">
-            <li class="title">Gravity</li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">scale</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 100%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">x</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 50%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">y</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 100%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <div class="accordion" id="accordionPanelsStayOpenExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-              Accordion Item #1
-            </button>
-          </h2>
-          <div class="dg">
-            <ul class="closed">
-              <li class="title">Engine</li>
-              <li class="cr boolean">
-                <div><span class="property-name">enableSleeping</span>
-                  <div class="c"><input type="checkbox"></div>
-                </div>
-              </li>
-              <li class="cr number has-slider">
-                <div><span class="property-name">timeScale</span>
-                  <div class="c">
-                    <div><input type="text"></div>
-                    <div class="slider">
-                      <div class="slider-fg" style="width: 83.3333%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="cr number has-slider">
-                <div><span class="property-name">velocityIterations</span>
-                  <div class="c">
-                    <div><input type="text"></div>
-                    <div class="slider">
-                      <div class="slider-fg" style="width: 33.3333%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="cr number has-slider">
-                <div><span class="property-name">positionIterations</span>
-                  <div class="c">
-                    <div><input type="text"></div>
-                    <div class="slider">
-                      <div class="slider-fg" style="width: 55.5556%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="cr number has-slider">
-                <div><span class="property-name">constraintIterations</span>
-                  <div class="c">
-                    <div><input type="text"></div>
-                    <div class="slider">
-                      <div class="slider-fg" style="width: 11.1111%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="cr boolean">
-                <div><span class="property-name">enabled</span>
-                  <div class="c"><input type="checkbox" checked="checked"></div>
-                </div>
-              </li>
-            </ul>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-              Accordion Item #2
-            </button>
-          </h2>
-          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-            <div class="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-              Accordion Item #3
-            </button>
-          </h2>
-          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
-        </div>
-      </div>
-      <li class="folder">
-        <div class="dg">
-          <ul class="closed">
-            <li class="title">Engine</li>
-            <li class="cr boolean">
-              <div><span class="property-name">enableSleeping</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">timeScale</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 83.3333%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">velocityIterations</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 33.3333%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">positionIterations</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 55.5556%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr number has-slider">
-              <div><span class="property-name">constraintIterations</span>
-                <div class="c">
-                  <div><input type="text"></div>
-                  <div class="slider">
-                    <div class="slider-fg" style="width: 11.1111%;"></div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">enabled</span>
-                <div class="c"><input type="checkbox" checked="checked"></div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="folder">
-        <div class="dg">
-          <ul>
-            <li class="title">Render</li>
-            <li class="cr boolean">
-              <div><span class="property-name">wireframes</span>
-                <div class="c"><input type="checkbox" checked="checked"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showDebug</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showPositions</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showBroadphase</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showBounds</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showVelocity</span>
-                <div class="c"><input type="checkbox" checked="checked"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showCollisions</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showSeparations</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showAxes</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showAngleIndicator</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showSleeping</span>
-                <div class="c"><input type="checkbox" checked="checked"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showIds</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showVertexNumbers</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showConvexHulls</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">showInternalEdges</span>
-                <div class="c"><input type="checkbox"></div>
-              </div>
-            </li>
-            <li class="cr boolean">
-              <div><span class="property-name">enabled</span>
-                <div class="c"><input type="checkbox" checked="checked"></div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-    <div class="close-button close-bottom" style="width: 245px;">▲</div>
-  </div>
-</body>{% endblock %}
+<body>
+    <canvas id="pendulum"></canvas>
+</body>
+
+<script>
+  var canvas = document.getElementById('pendulum')
+var ctx = canvas.getContext('2d')
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+const start = Date.now()
+const g = 9.8
+const x0 = canvas.width / 2
+const y0 = 50
+const scale = 50
+
+var pendulums = []
+
+function get_t(zero = start) {
+    return (Date.now() - zero) / 1000
+}
+
+class Pendulum {
+    constructor(l, a, f = 0, color = 'black', width = 1) {
+        this.t = Date.now()
+        this.f = f
+        this.l = l
+        this.a = a
+        this.w = Math.sqrt(g / l)
+        this.color = color
+        this.width = width
+    }
+
+    get_x(t) {
+        return this.a * Math.sin(this.w * t + this.f)
+    }
+
+    get_y(x) {
+        return Math.sqrt(this.l * this.l - x * x)
+    }
+
+    async render() {
+        ctx.beginPath()
+        ctx.moveTo(x0, y0)
+        let t = get_t(this.t)
+        let x = this.get_x(t)
+        let y = this.get_y(x)
+        ctx.lineTo(x * scale + x0, y * scale + y0)
+        ctx.stroke()
+    }
+
+    static drawAll() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        pendulums.forEach((p) => {
+            ctx.strokeStyle = p.color
+            ctx.lineWidth = p.width
+            p.render()
+        })
+    }
+
+    static clear() {
+        pendulums = []
+    }
+
+    static create(length = 1, amplitude = 0, initial_state = 0, color = 'black', width = 1) {
+        pendulums.push(new Pendulum(length, amplitude, initial_state, color, width))
+    }
+
+    static create_seria(
+        length = 1, amplitude = 0,
+        initial_state_func = (i) => 0.1 * i,
+        color_func = () => 'black',
+        width_func = (i) => i + 1) {
+        for (let i = 0; i < 10; ++i)
+            pendulums.push(new Pendulum(
+                length, amplitude,
+                initial_state_func(i), color_func(i), width_func(i)))
+    }
+}
+
+const interval = setInterval(() => Pendulum.drawAll(), 0);
+
+Pendulum.create_seria(10, 5, (i) => i * 0.2,
+    (i) => ['red', 'orange', 'yelow', 'green', 'blue', 'purpure', 'black'][i % 7])
+</script>
+
+</html>

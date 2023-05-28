@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main.apps.MainConfig',
+    'api.apps.ApiConfig',
+
     'bootstrap4',
+    
 
     'django_quill',
     'tinymce'

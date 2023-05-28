@@ -9,11 +9,18 @@ import misaka
 # Create your models here.
 
 
+class Category(models.Model):
+    #uuid = models.UUIDField(default=uuid.uuid4)
+    name = models.CharField(max_length=255)
+    def __str__(self):
+        return self.name
+    
 
 class Course(models.Model):
     #uuid = models.UUIDField(default=uuid.uuid4)
+    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    thumbnail = models.ImageField(default="stemified.png",upload_to='thumbnail')
+    #thumbnail = models.ImageField(default="stemified.png",upload_to='thumbnail')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=200)
@@ -25,11 +32,7 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
-class Category(models.Model):
-    name = models.CharField(max_length=255, default='None')
-    course = models.ManyToManyField(Course, related_name='categories')
-    def __str__(self):
-        return self.name
+
 
 class Modules(models.Model):
     #uuid = models.UUIDField(default=uuid.uuid4)
@@ -37,7 +40,7 @@ class Modules(models.Model):
     name = models.CharField(max_length=200)
     intro = HTMLField(null=True,blank=True)
     body = QuillField(max_length=10000)
-    resource = models.FileField(upload_to='main/upload', default='default.pdf')
+    #resource = models.FileField(upload_to='main/upload', default='default.pdf')
     def __str__(self):
         return self.name
 
@@ -49,6 +52,23 @@ class Video(models.Model):
 
     def __str__(self):
         return self.caption
+
+class Thumbnail(models.Model):
+    caption = models.CharField(blank=True, null=True, max_length=150)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='courses_thumbnail/%y')
+
+    def __str__(self):
+        return self.caption
+
+
+class Resource(models.Model):
+    courses = models.ForeignKey(Course, on_delete=models.CASCADE)
+    modules = models.ForeignKey(Modules, on_delete=models.CASCADE)
+    resource = models.FileField(upload_to='modules_resource/%y')
+
+class Simulation(models.Model):
+    pass
 
 class Quiz(models.Model):
     module = models.ForeignKey(Modules, on_delete=models.CASCADE)

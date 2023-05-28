@@ -21,71 +21,105 @@
             </article>
             <div class="embed-responsive embed-responsive-16by9">
                 {% if video %}
-                    {% for v in video %}
-                    <h3>{{v.caption}}</h3>
-                        
-                        <br><br>
-                        <style>
-                            .video-js .vjs-big-play-button {
-                              position: absolute;
-                              top: 50%;
-                              left: 50%;
-                              transform: translate(-50%, -50%);
-                            }
-                          
-                            @media (max-width: 768px) {
-                              .video-js .vjs-big-play-button {
-                                font-size: 1.5rem;
-                              }
-                            }
-                          
-                            @media (max-width: 576px) {
-                              .video-js .vjs-big-play-button {
-                                font-size: 1rem;
-                              }
-                            }
-                          </style>
-                        <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360" data-setup='{ "fluid": true }' controls>
-                            <source type="video/mp4" src="{{v.video.url }}" >
-                        </video>
-                    {% endfor %}
+                {% for v in video %}
+                <h3>{{v.caption}}</h3>
+                <style>
+                    .video-js .vjs-big-play-button {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+
+                    @media (max-width: 768px) {
+                        .video-js .vjs-big-play-button {
+                            font-size: 1.5rem;
+                        }
+                    }
+
+                    @media (max-width: 576px) {
+                        .video-js .vjs-big-play-button {
+                            font-size: 1rem;
+                        }
+                    }
+                </style>
+                <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360"
+                    data-setup='{ "fluid": true }' controls>
+                    <source type="video/mp4" src="{{v.video.url }}">
+                </video>
+                {% endfor %}
                 {% endif %}
-              </div>
+            </div>
             <div class="gototop js-top">
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-                    aria-controls="offcanvasScrolling">Enable body scrolling</button>
-        
-                <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-                    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="container-fluid">
-                        <div class="offcanvas-body">
-                            <div id="responseContainer" class="container-fluid">
-                                {% if response %}
-                                <textbox>
-                                    {{response}}
-                                </textbox>
-                        
-                                {% else %}
-                                <p>No response :(</p>
-                                {% endif %}
-                            </div>
-                            <form class="d-flex" role="search" method="post">
-                                {% csrf_token %}
-                                <input class="form-control me-2" type="search" placeholder="Ask Question" name="question" id="question"
-                                    aria-label="Question">
-                                <button id="submit" class="btn btn-outline-success" type="submit">Ask</button>
-                            </form>
-                        
-                        </div>
-                    </div>
-                    
-                </div>
+
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#question-form').on('submit', function (event) {
+                    event.preventDefault();  // Prevent the form from submitting normally
+
+                    // Get the question from the form input field
+                    var question = $('#question').val();
+
+                    // Send the question to the botAPI view using AJAX
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/chat/',
+                        data: {
+                            'question': question
+                        },
+                        success: function (response) {
+                            // Handle the response from the botAPI view
+                            appendMessage('user', question)
+                            appendMessage('bot', response.response)
+                            // Display the response in a div or element
+                        },
+                        error: function (xhr, errmsg, err) {
+                            // Handle any error that occurs during the AJAX request
+                            console.log(errmsg);
+                        }
+                    });
+                });
+                function appendMessage(sender, message) {
+                    // Create an HTML element for the message
+                    var messageElement = $('<div>').addClass('message');
+                    var senderElement = $('<div>').addClass('sender').text(sender + ': ');
+                    var contentElement = $('<div>').addClass('content').text(message);
+
+                    // Add appropriate classes to differentiate user and bot messages
+                    if (sender === 'user') {
+                        messageElement.addClass('user-message');
+                    } else if (sender === 'bot') {
+                        messageElement.addClass('bot-message');
+                    }
+
+                    // Append the elements to the chat-messages div
+                    messageElement.append(senderElement);
+                    messageElement.append(contentElement);
+                    $('#chat-messages').append(messageElement);
+                }
+            });
+
+        </script>
+        <style>
+            .message {
+                margin-bottom: 10px;
+            }
+
+            .sender {
+                font-weight: bold;
+            }
+
+            .user-message {
+                background-color: lightblue;
+            }
+
+            .bot-message {
+                background-color: lightgreen;
+            }
+        </style>
 
         <div class="col-md-4">
             <div class="position-sticky" style="top: 2rem;">
@@ -96,41 +130,47 @@
                 </div>
 
                 <div class="p-4">
-                    <h4 class="fst-italic">Archives</h4>
+                    <h4 class="fst-italic">Modules</h4>
                     <ol class="list-unstyled mb-0">
-                        <li><a href="#">March 2021</a></li>
-                        <li><a href="#">February 2021</a></li>
-                        <li><a href="#">January 2021</a></li>
-                        <li><a href="#">December 2020</a></li>
-                        <li><a href="#">November 2020</a></li>
-                        <li><a href="#">October 2020</a></li>
-                        <li><a href="#">September 2020</a></li>
-                        <li><a href="#">August 2020</a></li>
-                        <li><a href="#">July 2020</a></li>
-                        <li><a href="#">June 2020</a></li>
-                        <li><a href="#">May 2020</a></li>
-                        <li><a href="#">April 2020</a></li>
+                        {% if resources %}
+                        {% for resource in resources %}
+                        {{resource.name}}
+                        {% endfor %}
+                        {% else %}
+                        <span>
+                            <p>No resource</p>
+                        </span>
+                        {% endif %}
                     </ol>
                 </div>
-                <div class="accordion" id="accordionPanelsStayOpenExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                                aria-controls="panelsStayOpen-collapseOne">
-                                Simulation
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-                            <div class="accordion-body">
-                                <form class="d-flex" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Search"
-                                        aria-label="Search">
-                                    <button class="btn btn-outline-success" type="submit">Search</button>
-                                </form>
-                            </div>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Ask Doubts</button>
+
+                <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body d-flex flex-column">
+                        <div class="container-fluid flex-grow-1">
+                           
+                                <!-- Chat messages container -->
+                                <pre> <div  class="container-fluid">
+                                    <p class="text-wrap" id="chat-messages"></p>
+                                </div></pre>
+                            
+                        </div>
+                        <div id="responseContainer" class="container-fluid">
+                            <form class="d-flex mt-auto" id="question-form" method="post">
+                                {% csrf_token %}
+                                <textarea class="form-control me-2" type="" placeholder="Ask Question" name="question" id="question"
+                                    aria-label="Question"></textarea>
+                                <button id="submit" class="btn btn-outline-success" type="submit">Ask</button>
+                            </form>
                         </div>
                     </div>
+
                 </div>
                 <div class="p-4">
                     <h4 class="fst-italic">Elsewhere</h4>
@@ -143,17 +183,6 @@
             </div>
         </div>
     </div>
-    <!--
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-<ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="/">Home</a></li>
-<li class="breadcrumb-item"><a href="#">{{course.title}}</a></li>
-<li class="breadcrumb-item active" aria-current="page">{{module.name}}</li>
-</ol>
-</nav>
--->
-    
-    
-
 </div>
+
 {% endblock %}
