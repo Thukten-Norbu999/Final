@@ -1,4 +1,4 @@
-{% extends 'main/base.html' %}
+{% extends 'main/index.html' %}
 {% block title %} Login {% endblock %}
 {% block content %}  
 {% load crispy_forms_tags %}
@@ -13,12 +13,10 @@
               {% csrf_token %}
               <p>Username:</p>
               <input type="text" name="username" placeholder="Enter your username">
-              <br>
-              <br>
+              
               <p>Password:</p>
               <input type="password" name="password" placeholder="Enter password">
-              <br>
-              <br>
+             
               <input class="btn btn-primary" type="submit" name="" value="Login">
             </form>
                 <p>Don't have any account?<a href="/app/signup">Create one here</a></p>

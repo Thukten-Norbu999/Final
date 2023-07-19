@@ -20,7 +20,7 @@ class Course(models.Model):
     #uuid = models.UUIDField(default=uuid.uuid4)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    #thumbnail = models.ImageField(default="stemified.png",upload_to='thumbnail')
+    image = models.ImageField(upload_to='courses_thumbnail/', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=200)
@@ -31,7 +31,13 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
-
+    
+    @staticmethod
+    def get_image_url(obj):
+        if obj.image and hasattr(obj.image, 'url'):
+            return obj.image.url
+        else:
+            return '/media/courses_thumbnail/'
 
 
 class Modules(models.Model):
@@ -40,9 +46,19 @@ class Modules(models.Model):
     name = models.CharField(max_length=200)
     intro = HTMLField(null=True,blank=True)
     body = QuillField(max_length=10000)
+    #md_vidLink = models.CharField(max_length=1000)
     #resource = models.FileField(upload_to='main/upload', default='default.pdf')
     def __str__(self):
-        return self.name
+        return f'{self.name}-{self.course.title}'
+
+class SubModules(models.Model):
+    module = models.ForeignKey(Modules, on_delete=models.CASCADE,  related_name="SubModules")
+    name = models.CharField(max_length=150)
+    body = QuillField(max_length=1000000)
+
+    def __str__(self):
+        return f'{self.name}-{self.module.name}'
+    
 
 class Video(models.Model):
     #uuid = models.UUIDField(def)

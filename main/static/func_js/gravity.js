@@ -6,10 +6,12 @@ var Engine = Matter.Engine,
     Composite = Matter.Composite,
     Bodies = Matter.Bodies;
 
+var createWeight = 0,
+    createAir = 0
+    
 // create engine
 var engine = Engine.create();
 var world = engine.world;
-
 // create renderer
 var render = Render.create({
     canvas: document.getElementById("canvas"),
@@ -31,17 +33,18 @@ Runner.run(runner, engine);
 
 // add bodies
 Composite.add(world, [
-    // falling blocks
-    Bodies.rectangle(200, 100, 60, 60, { frictionAir: 0.001 }),
-    Bodies.rectangle(400, 100, 60, 60, { frictionAir: 0.05 }),
-    Bodies.rectangle(600, 100, 60, 60, { frictionAir: 0.1 }),
-
     // walls
     Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
     Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
     Bodies.rectangle(800, 300, 50, 600, { isStatic: true }),
     Bodies.rectangle(0, 300, 50, 600, { isStatic: true })
 ]);
+
+
+
+let Boxes = []
+
+var ballOptions = {frictionAir: createAir, density:createWeight}
 
 // add mouse control
 var mouse = Mouse.create(render.canvas);
@@ -54,6 +57,19 @@ var mouseConstraint = MouseConstraint.create(engine, {
         }
     }
 });
+
+var x = 200,
+    y = 100
+
+Bodies.rectangle(400, 100, 60, 60, { frictionAir: 0.05 }),
+Bodies.rectangle(600, 100, 60, 60, { frictionAir: 0.1 }),
+function addBox(){
+    Boxes.add(Bodies.rectangle(x, y, 60, 60, ballOptions))
+}
+
+for(var i=0;i < Boxes.length; i++){
+    World.add(world, Boxes)
+}
 
 Composite.add(world, mouseConstraint);
 

@@ -4,142 +4,35 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-      <div class="col-lg-6 offset-lg-6">
-        <div class="section-heading">
-          <h2>We Provide <em>Different Services</em> &amp;
-            <span>Features</span> For Your Agency
-          </h2>
-          <div class="line-dec"></div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doers eiusmod.</p>
-        </div>
-      </div>
-    </div>
-    <div class="row service-table">
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <div class="service-item">
-          <div class="icon">
-            <img src="assets/images/services-01.jpg" alt="discover SEO" class="templatemo-feature">
-          </div>
-          <h4>Discover More on Latest SEO Trends</h4>
-        </div>
-        <div class="service-item">
-          <div class="icon">
-            <img src="assets/images/services-03.jpg" alt="precise data" class="templatemo-feature">
-          </div>
-          <h4>Precise Data Analysis &amp; Prediction</h4>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <div class="service-item">
-          <div class="icon">
-            <img src="assets/images/services-02.jpg" alt="data analysis" class="templatemo-feature">
-          </div>
-          <h4>Real-Time Big Data Analysis</h4>
-        </div>
-        <div class="service-item">
-          <div class="icon">
-            <img src="assets/images/services-04.jpg" alt="SEO marketing" class="templatemo-feature">
-          </div>
-          <h4>SEO Marketing &amp; Social Media</h4>
-        </div>
-      </div>
-    </div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="id_category">Category:</label>
+    <select name="category" id="id_category">
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="id_author">Author:</label>
+    <select name="author" id="id_author">
+        {% for user in users %}
+            <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="id_image">Image:</label>
+    <input type="file" name="image" id="id_image">
+    
+    <label for="id_title">Title:</label>
+    <input type="text" name="title" id="id_title">
+    
+    <label for="id_description">Description:</label>
+    <textarea name="description" id="id_description"></textarea>
+    
+    <button type="submit">Submit</button>
+</form>
+
   </div>
   
-  <style>
-    /* Container */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 30px;
-}
 
-/* Section Heading */
-.section-heading h2 {
-  font-size: 28px;
-  color: #333;
-  font-weight: 700;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.section-heading h2 em {
-  font-style: normal;
-  font-weight: 400;
-}
-
-.section-heading span {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: #ff8c00;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.section-heading .line-dec {
-  width: 50px;
-  height: 3px;
-  background-color: #ff8c00;
-  margin: 20px auto 30px;
-}
-
-.section-heading p {
-  font-size: 16px;
-  color: #666;
-  line-height: 28px;
-  text-align: center;
-}
-
-/* Service Table */
-.service-table {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.service-item {
-  flex-basis: 50%;
-  padding: 0 10px;
-  margin-bottom: 30px;
-}
-
-.service-item h4 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-
-/* Responsive styles */
-@media (max-width: 767px) {
-  .service-item {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-}
-
-/* Flexbox styles */
-.service-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  margin: 10px;
-  flex-basis: calc(50% - 20px);
-}
-
-/* Table-like styles */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-  </style>
 {% endblock %}

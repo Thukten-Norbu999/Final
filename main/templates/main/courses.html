@@ -2,82 +2,64 @@
 {% block title %} Courses {% endblock %}
 {% load static %}
 {% block content %}
-
-
 <div id="fh5co-course">
-	{% if courses %}
-	{% for course in courses %}
-	<div id="carouselExample" class="carousel slide">
-		<div class="carousel-inner">
-			{% if course.category == 'Physics' %}
-			<div class="carousel-item active">
+	<!-- {% if courses %}
+	{% for category in categories %}
+	<div class="container-fluid">
+		{% if category.name == 'Physics' %}
+		<div id="carouselExample" class="carousel slide">
 
-				<div class="d-flex justify-content-start">
-					{% if forloop.counter < 3 %} 
-					<div class="card" style="width: 18rem;">
-						<img src="..." class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">{{course.title}}</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk
-								of
-								the card's content.</p>
-							<a href="{% url 'course_modules' course.title %}" class="btn btn-primary">Learn</a>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<div class="d-flex justify-content-center">
+						<div class="card" style="width: 18rem;">
+							
+							<div class="card-body">
+								<h5 class="card-title">{{course.title}}</h5>
+								<p class="card-text">{{course.description|truncatewords_html:20|safe}}</p>
+								<a href="{% url 'course_modules' course.title %}" class="btn btn-primary">Learn</a>
+							</div>
 						</div>
 					</div>
 				</div>
-				{% endif %}
+				<div class="carousel-item">
+					<img src="..." class="d-block w-100" alt="...">
+				</div>
 			</div>
-			<div class="carousel-item">
-				<img src="..." class="d-block w-100" alt="...">
-			  </div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+				<span class="carousel-control-next-icon" ></span>
+				<span>Next</span>
+			  </button>
+		{% endif %}  
 		</div>
-		{% else %}
-		{% endif %}
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-			<span class="carousel-control-next-icon"><i>NEXT</i></span>
-			<span class="visually">Next</span>
-		</button>
+		
 	</div>
 	{% endfor %}
-	{% endif %}
-	<!-- <div class="container">
-		<div class="row animate-box">
-			<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-				<h2>Categories</h2>
-			</div>
-		</div>
-
+	{% endif %} -->
+	<div class="container">
 
 		<div class="row">
 			{% if courses %}
-			{% for course in courses %}
-			<div class="col-md-6 animate-box">
-				<div class="course">
-
-
-
-					<img src="{{thumbnail.url}}">
-
-
-
-					<div class="desc">
-						<h3><a href="#">{{course.title}}</a></h3>
-						<p>{{course.}}</p>
-						<p>{{course.description|truncatewords_html:30|safe}}</p>
-						<p>{{course.category}}</p>
-						<span><a href="{% url 'course_modules' course.title %}"
-								class="btn btn-primary btn-sm btn-course">Take A Course</a></span>
+				{% for course in courses %}
+				<div class="col-md-6 animate-box">
+					<div class="course">
+						<div class="desc">
+							<h3><a href="#">{{course.title}}</a></h3>
+							<p>{{course.}}</p>
+							<p>{{course.description|truncatewords_html:30|safe}}</p>
+							<p>{{course.category}}</p>
+							<span><a href="{% url 'course_modules' course.title %}"
+									class="btn btn-primary btn-sm btn-course">Take A Course</a></span>
+						</div>
 					</div>
 				</div>
-			</div>
-			{% endfor %}
+				{% endfor %}
 			{% else %}
 			<div class="course">
-
 				<div class="desc" style="word-wrap: break-word;">
 					<h1>No Courses :(</h1>
 				</div>
@@ -85,8 +67,8 @@
 			{% endif %}
 
 		</div>
-	</div> -->
+	</div>
 
-</div>
+
 </div>
 {% endblock %}

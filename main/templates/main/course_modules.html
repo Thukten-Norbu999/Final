@@ -90,8 +90,10 @@
                 </div>
 
                 <div class="p-4">
-                    <h4 class="fst-italic">Modules</h4>
+                    <h4 class="fst-italic">Resources</h4>
                     <ol class="list-unstyled mb-0">
+                        
+                        
                         {% if modules %}
                         {% for module in modules %}
                             <a href="{% url 'learn_module' course.title module.name %}">{{module.name}}</a>

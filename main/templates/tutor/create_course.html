@@ -1,0 +1,162 @@
+{% extends 'tutor/base.html' %}
+{% load static %}
+{% block title %} {% endblock %}
+
+{% block content %}
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <style>
+        /* Quill editor container */
+        .quill-editor {
+            width: 100%;
+        }
+
+        /* Quill toolbar styles */
+        .ql-toolbar {
+            border: none;
+            background-color: #f8f8f8;
+        }
+
+        .ql-container {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            height: 200px;
+        }
+
+        .ql-editor {
+            padding: 10px;
+        }
+
+        /* Form styles */
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            
+            <h2>Add Course</h2>
+            <form method="post" enctype="multipart/form-data" id="create-form">
+                {% csrf_token %}
+                <label for="id_category">Category:</label>
+                <select name="category" id="id_category">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+        
+                <label for="id_author">Author:</label>
+                <select name="author" id="id_author">
+                    {% for user in users %}
+                        <option value="{{ user.id }}">{{ user.username }}</option>
+                    {% endfor %}
+                </select>
+        
+                <label for="id_image">Image:</label>
+                <input type="file" name="image" id="id_image">
+        
+                <label for="id_title">Title:</label>
+                <input type="text" name="title" id="id_title">
+        
+                <label for="id_description">Description:</label>
+                <div class="quill-editor">
+                    <div id="id_description" style="height: 200px;"></div>
+                </div>
+        
+                <button type="submit">Submit</button>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <!-- Column for viewing courses -->
+            <h2>View Courses</h2>
+            <div><!-- View courses content here --></div>
+          </div>
+        </div>
+      </div>
+   
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        var quill = new Quill('#id_description', {
+  theme: 'snow',
+  modules: {
+    toolbar: [
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      ['link', 'image', 'video'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['blockquote', 'code-block'],
+      [{ 'script': 'sub' }, { 'script': 'super' }],
+      [{ 'indent': '-1' }, { 'indent': '+1' }],
+      [{ 'direction': 'rtl' }],
+      [{ 'color': [] }, { 'background': [] }],
+      ['clean']
+    ]
+  }
+});
+    </script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script><script>
+    $(document).ready(function () {
+        $('#create-form').on('submit', function (event) {
+            // Prevent the form from submitting normally
+
+            // Get the question from the form input field
+            var author = $('#id_author').val();
+            var image = $('#id_image').val();
+            var title = $('#id_title').val();
+            var description = $('#id_description').val()
+            
+            // Send the question to the botAPI view using AJAX
+            $.ajax({
+                type: 'POST',
+                url: '/api/createAPI/',
+                data: {
+                    'author': author,
+                    'image': image,
+                    'title': title,
+                    'description': description
+                },
+                success: function (response) {
+                    // Handle the response from the botAPI view
+                    
+                    // Display the response in a div or element
+                },
+                error: function (xhr, errmsg, err) {
+                    // Handle any error that occurs during the AJAX request
+                    console.log(errmsg);
+                }
+            });
+        });
+        
+    });
+
+</script>
+
+{% endblock %}

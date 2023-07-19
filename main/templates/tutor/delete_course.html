@@ -1,0 +1,15 @@
+{% extends 'tutor/base.html' %}
+{% load static %}
+{% block title %} {% endblock %}
+
+{% block content %}
+<center>
+    <h1>add course</h1>
+</center>
+<form action="/success">
+    {% csrf_token %}
+    {% form.as_p %}
+</form>
+
+
+{% endblock %}
