@@ -10,4 +10,6 @@ django-froala-editor
 django-ckeditor
 captcha
 crispy-bootstrap4
+django-bootstrap4
+django-tinymce
 sqlparse
